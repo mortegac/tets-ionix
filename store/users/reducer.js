@@ -1,52 +1,22 @@
 import {
-  GET_WEATHER,
-  SET_WEATHER
+  GET_USERS,
+  SET_USERS
 } from './constants'
   
-  const initialState={
-    dates: {
-      dayOne:{ 
-        dateName:'', 
-        dateNameEn:'', 
-        dateNumber:'', 
-        temperatureMin:'',
-        temperatureMax:'',
-        icons:{}, 
-        texts:{}, 
-      },
-      dayTwo:{  
-        dateName:'', 
-        dateNameEn:'', 
-        dateNumber:'', 
-        temperatureMin:'',
-        temperatureMax:'',
-        icons:{}, 
-        texts:{}, 
-      },
-      dayTree: {
-        dateName:'', 
-        dateNameEn:'', 
-        dateNumber:'', 
-        temperatureMin:'',
-        temperatureMax:'',
-        icons:{}, 
-        texts:{}, 
-      },   
-  }
-};
+  const initialState={"items": []};
   
-  export const weatherReducers = (state = initialState, action) => {
+  export const usersReducers = (state = initialState, action) => {
     switch (action.type) {
     
-      case GET_WEATHER:
+      case GET_USERS:
         return { 
           ...state, 
         };
     
-      case SET_WEATHER:
+      case SET_USERS:
         return { 
           ...state,  
-          dates: {...action.payload},  
+          items: {...action.payload},  
       };  
     
       default:
@@ -55,6 +25,6 @@ import {
   };
   
   export default{
-    weather: weatherReducers,
+    users: usersReducers,
   };
   

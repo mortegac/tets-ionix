@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "test-ionix",
+    "name": "test-ionix-v1.0.2",
+    "version": "1.0.2",
     "slug": "test-ionix",
     "platforms": [
       "ios",
-      "android",
+      "android"
     ],
-    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {

@@ -1,86 +1,45 @@
-import {GET_WEATHER, SET_WEATHER} from './constants';
+import {GET_USERS, SET_USERS} from './constants';
 
-import { loadingStart, loadingFinished } from '../loading/actions';
 import { errorsAdd } from '../errors/actions';
-import services from '../../services/weather.services';
-
-// export const getWeather = payload => ({
-// 	type: GET_WEATHER,
-// 	payload
-// });
+import services from '../../services/ionix.services';
 
 
 
 
-export const getWeather = (payload) => {
+export const getUsers = (payload) => {
 
 	return async (dispatch) => {
 		try{
-			// dispatch(loadingStart('weather'));
-		
-			const response = await services.getWeatherList();
+				
+			console.log(' -+ payload -+', payload);
+			const response = await services.getDNI(`search?rut=${payload.dni}`);
 			
-			// console.log(' -+ response -+', await response);
 		
 			if( typeof(response) !== 'undefined' ){
 
 				const newPayload = {
-					payload: {...response }
+					payload: {...response.data.result.items }
 				}
 
-				// Object.entries(response).forEach(doc => {
-					
-				// 	console.log('<response>', response);
-
-				// 	// data.push({
-				// 	//   id: doc[0],
-				// 	//   ...doc[1],
-				// 	//   //date: doc[1].hasOwnProperty('date') ? new Date(doc[1].date['seconds']*1000): new Date()
-				// 	// });
-			  
-				// })
-
-
-				dispatch({ type: SET_WEATHER, ...newPayload });
+				dispatch({ type: SET_USERS, ...newPayload });
 
 			}
 				
-				
-			// 	const newData = _.mapKeys(response, 'id');
-
-			// 	console.log('getPost - newData: ', newData);
-			// 	const newPayload = {
-			// 		payload:{ ...newData }
-			// 	}
-			// 	dispatch({ type: POST_GET, ...newPayload });
-
-
-		//   }else{
-		//     const dataPayload = { payload:{error:'El nombre de usuario o contraseña son incorrectos.'}};
-		//     dispatch({ type: LOGIN_USER_FAILED, ...dataPayload });
 			
-			// dispatch(errorsAdd({error:'no llega la data', module:'weather'}));
-
-			// }
-
-      
-
-      	// dispatch(loadingFinished('weather'));
       
     }catch(e){
-			dispatch(errorsAdd({error:e, module:'weather'}));
-			// dispatch(loadingFinished('weather'));
+			dispatch(errorsAdd({error:e, module:'users'}));
 		}
 	};
 };
 
 
-export const setWeather = payload => ({
-	type: SET_WEATHER,
+export const setUsers = payload => ({
+	type: SET_USERS,
 	payload
 });
 
 export default {
-  getWeather,
-  setWeather
+  getUsers,
+  setUsers
 };

@@ -13,8 +13,10 @@ export const getDNI = async (params) => {
         'Connection': 'keep-alive',
     };
 
-    // console.log(' -+ getWeatherList -+', CONFIG.uri_weather);
-    let res = await axios.get(`CONFIG.uri_ionix${params}`, headerSpecific);
+    console.log(`<CONFIG>: CONFIG.uri_ionix${params}`);
+
+    console.log(' -+ getDNI -+', getDNI);
+    let res = await axios.get(`${CONFIG.uri_ionix}${params}`, headerSpecific);
     
     console.log('<res>', res);
     
@@ -49,4 +51,4 @@ export const getDNI = async (params) => {
 // };
 
 
-export default { getWeatherList };
+export default { getDNI };

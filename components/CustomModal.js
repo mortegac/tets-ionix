@@ -2,9 +2,15 @@ import React, {useEffect, useState} from 'react';
 import { StyleSheet, View, Text, Modal, TouchableHighlight,} from 'react-native';
 import Icon from './Icon';
 import { Container, IconClose, IconCloseText, Row } from './CustomModalStyle';
+const hash = 'oWp/u5Pl6ySX9RFYe+XBTjCiGepyYC6uO+m1NLWJEQY+fVi3cc3RAA';
+const CustomModal = ({ isVisible, onRequestClose, onRequestDni }) => {
 
-
-const CustomModal = ({ isVisible, onRequestClose }) => {
+    const handlerReturn = (id) =>{
+        console.log('<CustomModal>: ', id);
+        
+        onRequestDni(id);
+        onRequestClose();
+    }
 
     return(  
         <Modal
@@ -25,7 +31,6 @@ const CustomModal = ({ isVisible, onRequestClose }) => {
                 }}>
                         <IconClose onPress={onRequestClose}>
                             <Icon library="Ionicons" name="ios-close-circle-outline" size={35} color="#fff" />
-                            {/* <IconCloseText>Close</IconCloseText> */}
                         </IconClose>
 
                     </Row>
@@ -36,8 +41,12 @@ const CustomModal = ({ isVisible, onRequestClose }) => {
                         height: '80%'
 
                     }}>
-                        
                     
+                    <IconClose onPress={()=>handlerReturn(hash)}
+                     style={{width: 300, height:60, backgroundColor: 'black'}}
+                    >
+                            <IconCloseText style={{fontSize: 22}}>Devolver el Rut: 1-9</IconCloseText>
+                    </IconClose>
                     </Row>
                  
 

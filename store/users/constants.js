@@ -1,3 +1,3 @@
 
-export const GET_WEATHER = 'GET_WEATHER';
-export const SET_WEATHER = 'SET_WEATHER';
+export const GET_USERS = 'GET_USERS';
+export const SET_USERS = 'SET_USERS';

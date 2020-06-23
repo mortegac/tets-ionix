@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import users from './users/reducer';
-// import errors from './errors/reducer';
+import errors from './errors/reducer';
 
 export const reducers = () => ({
-   ...users,
+  ...errors,
+  ...users,
 });
 
 export default combineReducers(reducers());
